@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}
+Index
+{% endblock %}
+
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    /* Define a CSS class for the important text */
+    .important {
+      color: #336699;
+    }
+  </style>
+{% endblock %}
+
+{% block content %}
+  <h1>Index</h1>
+  <form action="/predict" method="post">
+    <!-- Add labels for the input fields -->
+    <label for="age">Age:</label>
+    <!-- Add a placeholder for the age input field -->
+    <input type="text" id="age" name="age" required placeholder="Enter your age">
+    <br>
+    <label for="gender">Gender:</label>
+    <!-- Add a placeholder for the gender input field -->
+    <select id="gender" name="gender">
+        <option value="0">Stupid</option>
+        <option value="1">Female</option>
+      </select>
+    <br>
+    <!-- Close the input tags properly -->
+    <input type="submit">
+  </form>
+
+  <!-- Display predictions if available -->
+  {% if predictions %}
+    <h2>Predictions:</h2>
+    <p>The predicted genre is: {{ predictions }}</p>
+  {% endif %}
+
+  <p class="important">
+    Welcome to my awesome homepage.
+  </p>
+{% endblock %}
